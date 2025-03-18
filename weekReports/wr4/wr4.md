@@ -12,7 +12,10 @@
 
 ### Challenge Practice 
 
-![Challenge Practice](challengepractie.png)
+![Challenge Practice](challengepractice.png)
+![Challenge Practice](challengepractice2.png)
+![Challenge Practice](challengepractice3.png)
+![Challenge Practice](challengepractice4.png)
 
 ### Practice 3
 
