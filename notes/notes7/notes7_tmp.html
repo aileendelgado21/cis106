@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>notes7.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="notes-7">Notes 7</h1>
+<h2 id="cat">CAT</h2>
+<h3 id="definition">Definition:</h3>
+<p>is used for displaying the content of a file.</p>
+<h3 id="usageformula">Usage/Formula:</h3>
+<p><code>cat + option + file(s) to display</code></p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Display the content of a file located in the pwd : <code>cat todo.lst</code></li>
+<li>Display the content of a file using absolute path : <code>cat ~/Documents/todo.lst</code></li>
+<li>Display the content of a file line numbers: <code>cat -n ~/Documents/todo.md</code></li>
+<li>Display the content of a file with line numbers excluding empty lines: <code>cat -b ~/Documents/todo.md</code></li>
+</ul>
+<h2 id="tac">TAC</h2>
+<h3 id="definition">Definition</h3>
+<p>is used for displaying the content of a file in reverse order.</p>
+<h3 id="usageformula">Usage/Formula</h3>
+<p><code>tac + option + file(s) to display</code></p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Display the content of a file located in the pwd: <code>tac todo.md</code></li>
+<li>Display the content of a file using absolute path: <code>tac ~/Documents/todo.md</code></li>
+</ul>
+<h2 id="head">HEAD</h2>
+<h3 id="definition">Definition</h3>
+<p>Displays the top <code>N</code> number of lines of a given file. By default, it prints the first 10 lines. If more than one file name is provided then data from each file is preceded by its file name.</p>
+<h3 id="usageformula">Usage/Formula</h3>
+<p><code>head + option + file(s)</code></p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Display the first 10 lines of a file: <code>head ~/Documents/Book/dracula.txt</code></li>
+<li>Display the first 5 lines of a file: <code>head -5 ~/Documents/Book/dracula.txt</code></li>
+<li>Display the first lines of multiple files:<code>head -n 5 dracula.txt bible.txt war-and-peace.txt</code></li>
+<li>Display the first line of multiple files using wildcards:<code>head -n 1 *.csv *.py</code></li>
+</ul>
+<h2 id="tail">TAIL</h2>
+<h3 id="definition">Definition</h3>
+<p>Displays the last N number of lines of a given file. By default, it prints the last 10 lines. If more than one file name is provided then data from each file is preceded by its file name.</p>
+<h3 id="usageformula">Usage/Formula</h3>
+<p><code>tail + option + file</code></p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Display the last 10 lines of a file: <code>tail ~/Documents/Book/dracula.txt</code></li>
+<li>Display the last 5 lines of a file: <code>tail -5 ~/Documents/Book/dracula.txt</code></li>
+<li>Display the last 5 lines of multiple files: <code>tail -n 5 dracula.txt bible.txt war-and-peace.txt</code></li>
+<li>Display the last lines of multiple files using wildcards: <code>tail -n 1 *.csv *.py</code></li>
+</ul>
+<h2 id="cut">CUT</h2>
+<h3 id="definition">Definition</h3>
+<p>Is used to extract a specific section of each line of a file and display it to the screen.</p>
+<h3 id="usageformula">Usage/Formula</h3>
+<p><code>cut + option + file(s)</code></p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Display a list of all the users in your system:<code>cut -d ':' -f1 /etc/passwd</code></li>
+<li>Display a list of all the users in your system with their login shell:<code>cut -d ':' -f1,7 /etc/passwd</code></li>
+<li>Cut a range of bytes per line:<code>cut -b 1-5 usernames.txt</code>
+<img src="file:///home/ad/cis106/notes/notes7/exampleofcut.png" alt="more examples of cut; part 1">
+<img src="file:///home/ad/cis106/notes/notes7/parttwoofcut.png" alt="more examples of cut; part 2"></li>
+</ul>
+<h2 id="sort">SORT</h2>
+<h3 id="definition">Definition</h3>
+<p>Is used for sorting files. The sort command supports sorting: alphabetically. in reverse order, and by month. The sort command follows this order unless specified otherwise:</p>
+<ul>
+<li>Lines starting with a number will appear before lines starting with a letter.</li>
+<li>Lines starting with a letter that appear earlier in the alphabet will appear before lines starting with appears later in the alphabet.</li>
+<li>Lines starting with a lowercase letter will appear before lines starting with the same letter in uppercase.</li>
+</ul>
+<h3 id="usageformula">Usage/Formula</h3>
+<p><code>sort + option + file</code></p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Sort + option + file:<code>sort users.lst</code></li>
+<li>Sort a file and save the output to a new file:<code>sort -o sorted.lst user.lst</code></li>
+<li>Sort a file in reverse order:<code>sort -r users.txt</code></li>
+<li>Sort by column number:<code>sort -k 2 users.txt</code></li>
+<li>Sort a file with numeric data:<code>sort -n phones.txt</code>
+** NOTE: USE THE -t OPTION TO SPECIFY A DELIMITER. FOR EXAMPLE: <code>sort -t&quot;;&quot; -k3 cereal.csv</code></li>
+</ul>
+<h2 id="wc">WC</h2>
+<h3 id="definition">Definition</h3>
+<p>Is used for printing the number of lines,characters and bytes in a file.</p>
+<h3 id="usageformula">Usage/Formula</h3>
+<p><code>wc + option + files(s)</code></p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Display the number of characters in a file:<code>wc -m users.txt</code></li>
+<li>Display the number of lines in a file:<code>wc -l users.txt</code></li>
+<li>Display the number words in a file:<code>wc -w user.txt</code></li>
+</ul>
+<h2 id="tr">TR</h2>
+<h3 id="definition">Definition</h3>
+<p>Is used for translating or deleting characters from standard output.</p>
+<h3 id="usageformula">Usage/Formula</h3>
+<p>`Standard output | tr + option + set + set</p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Translate one character to another (for example a period with a comma.):<code>cat file.txt | tr '.' '.'</code></li>
+<li>Translate white space into tabs:<code>cat program.py | tr &quot;[!space:]&quot; '\t'</code></li>
+<li>Translate tabs into space:<code>cat file.py | tr -s &quot;[!space:]&quot; ' '</code></li>
+</ul>
+<h2 id="diff">DIFF</h2>
+<h3 id="definition">Definition</h3>
+<p>The diff command compares files and displays the differences between them.</p>
+<h3 id="usageformula">Usage/Formula</h3>
+<p><code>diff + option + file1 + file2</code></p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Display the difference between two files:<code>diff cars.csv cars-backup.csv</code></li>
+<li>Display the difference between two files in a column format:<code>diff -y cars.csv car-backup.csv</code></li>
+</ul>
+<h2 id="grep">GREP</h2>
+<h3 id="definition">Definition</h3>
+<p>Is used to search text in given files. Grep works line by line basis (it matches the search criteria in a line by line basis)</p>
+<h3 id="usageformula">Usage/Formula</h3>
+<p><code>grep + option + search criteria + files(s)</code></p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Search any line that contains the word &quot;dracula&quot; in the given file: <code>grep 'dracula' ~/Documents/dracula.txt</code></li>
+<li>Search any line that contains the word 'dracula regardless of the case:<code>grep -in 'dracula' ~/Documents/Books/dracula.txt</code></li>
+<li>Search for all the lines that do not contain the word 'war':<code>grep -v 'war' ~/Documents/Book/dracula.txt</code></li>
+</ul>
+
+</body>
+</html>
