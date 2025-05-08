@@ -39,7 +39,7 @@ Is a Linux terminal pager that shows a file's contents one screen at a time.
 
 ## `>>` - adds to a file
 
-## `|`
+## `|`-pipe 
 
 ### Definition
 The pipe allows you to redirect the standard output of a command to the standard input of another.
